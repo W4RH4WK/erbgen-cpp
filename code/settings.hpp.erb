@@ -1,0 +1,32 @@
+<%
+
+settings = {
+    'width' => {:type => 'int', :default => '0'},
+    'height' => {:type => 'int', :default => '0'},
+    'bias' => {:type => 'float', :default => '3.14f'},
+    'vsync' => {:type => 'bool', :default => 'false'},
+}
+
+%>
+// --------------------------------
+//   This file is auto-generated!
+// --------------------------------
+
+#pragma once
+
+#include <ostream>
+
+struct Settings {
+% settings.each do |field, info|
+    <%= "#{info[:type]} #{field} = #{info[:default]};" %>
+% end
+};
+
+inline std::ostream& operator<<(std::ostream& out, const Settings& settings)
+{
+    return out << "Settings{\n"
+% settings.each do |field, info|
+        << "\t<%= field %>: " << settings.<%= field %> << "\n"
+% end
+        << "}";
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <PropertyPageSchema Include="$(MSBuildThisFileDirectory)erb_template.props" />
+    <AvailableItemName Include="ErbTemplate">
+      <Targets>ERB</Targets>
+    </AvailableItemName>
+  </ItemGroup>
+  <Target Name="ERB" Condition="'@(ErbTemplate)' != ''" BeforeTargets="ClCompile">
+    <ItemGroup>
+      <ErbTemplate>
+        <Message>erb "%(RelativeDir)%(Filename)%(Extension)" &gt; "%(RelativeDir)%(Filename)"</Message>
+        <Command>erb "%(RelativeDir)%(Filename)%(Extension)" &gt; "%(RelativeDir)%(Filename)"</Command>
+        <Outputs>%(RelativeDir)%(Filename)</Outputs>
+      </ErbTemplate>
+    </ItemGroup>
+    <CustomBuild Sources="@(ErbTemplate)" MinimalRebuildFromTracking="true" TrackerLogDirectory="$(TLogLocation)" />
+  </Target>
+</Project>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectSchemaDefinitions xmlns="http://schemas.microsoft.com/build/2009/properties">
+  <ItemType Name="ErbTemplate" DisplayName="Erb Template" />
+  <ContentType Name="ErbTemplate" ItemType="ErbTemplate" DisplayName="Erb Template" />
+  <FileExtension Name=".erb" ContentType="ErbTemplate" />
+</ProjectSchemaDefinitions>

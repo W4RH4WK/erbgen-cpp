@@ -1,0 +1,6 @@
+/.vs
+/x64
+/erbgen
+/*.user
+
+/code/settings.hpp
